@@ -16,10 +16,18 @@ renamed as (
         o_orderpriority as priority_code,
         o_clerk as clerk_name,
         o_shippriority as ship_priority,
-        o_comment as comment
+        o_comment as comment,
+        current_timestamp() update_timestamp_ntz
+
+
 
     from source
 
 )
 
+
 select * from renamed
+
+{% if is_incremental() %}
+    WHERE order_date> (SELECT MAX(order_date) FROM {{ this }})   
+{% endif %}

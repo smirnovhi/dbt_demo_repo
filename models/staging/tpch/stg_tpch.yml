@@ -88,6 +88,7 @@ models:
  
   - name: stg_tpch_orders
     description: staging layer for orders data
+    materialized: incremental
     columns:
       - name: order_key
         description: primary key of the model
@@ -110,7 +111,8 @@ models:
         description: numeric representation of the shipping priority, zero being the default
       - name: comment
         description: '{{ doc("comment") }}'
-
+      - name: update_timestamp_ntz
+        description: '{{ doc("update_timestamp_ntz") }}'
   - name: stg_tpch_part_suppliers
     description: staging layer for suppliers data
     columns:

@@ -52,25 +52,25 @@ final as (
         order_item_summary.gross_item_sales_amount,
         order_item_summary.item_discount_amount,
         order_item_summary.item_tax_amount,
-        order_item_summary.net_item_sales_amount
+        order_item_summary.net_item_sales_amount,
+        orders.update_timestamp_ntz update_timestamp_ntz
     from
         orders
         inner join order_item_summary
             on orders.order_key = order_item_summary.order_key
+            {% if is_incremental() %}
+
+                -- this filter will only be applied on an incremental run. Incremental models can be used to only rebuild the defined latest rows without rebuilding the entire table. 
+                -- full documentation: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#understanding-the-is_incremental-macro
+
+                WHERE orders.update_timestamp_ntz > (select max(update_timestamp_ntz) from {{ this }})
+
+            {% endif %}
 )
 select 
     *
 from
     final
 
-  where order_date = '1992-02-01'
+  
 
-{% if is_incremental() %}
-
-  -- this filter will only be applied on an incremental run. Incremental models can be used to only rebuild the defined latest rows without rebuilding the entire table. 
-  -- full documentation: https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#understanding-the-is_incremental-macro
-
-or  order_date = '1992-02-02'
-
-
-{% endif %}

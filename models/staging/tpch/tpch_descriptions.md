@@ -43,3 +43,8 @@
 {% docs available_quantity %} raw available quantity {% enddocs %}
 
 {% docs cost %} raw cost {% enddocs %}
+
+
+{% docs update_timestamp_ntz %} source update timestamp {% enddocs %}
+
+
