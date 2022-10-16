@@ -12,6 +12,6 @@
 }}
 
 select *
- from {{ ref('incremental_dim_orders') }}
+ from {{ ref('dim_orders') }}
 
 {% endsnapshot %}
