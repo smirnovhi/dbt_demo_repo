@@ -5,16 +5,5 @@ For full documentation: https://docs.getdbt.com/docs/building-a-dbt-project/anal
 
 */
 
-select * from {{ ref('incremental_dim_orders') }}
+select * from {{ ref('dim_orders') }}
 
-
-/* 
-Stats you should expect to see:
-
-- With a full rebuild (meaning either the first execution of the model or using --full-refresh) 
- of the `incremental_dim_orders` model, there will only be 7 rows of 1992-02-01 for the query results.
-
-- With an incremental run, you will see 7 rows of orders with the order_date `1992-02-01` and 6 rows of orders with the order_date of `1992-02-02`
-
-
- */
