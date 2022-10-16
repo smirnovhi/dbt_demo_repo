@@ -171,13 +171,3 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
-  - name: dim_orders
-    columns:
-      - name: orders.order_key, 
-      - name: order_date,
-      - name: customer_key,
-      - name: status_code,
-      - name: priority_code,
-      - name: clerk_name,
-      - name: ship_priority,
-      - name: comment

@@ -5,7 +5,7 @@ For full documentation: https://docs.getdbt.com/docs/building-a-dbt-project/anal
 
 */
 
-select * from {{ ref('dim_orders') }}
+select * from {{ ref('incremental_dim_orders') }}
 
 
 /* 
