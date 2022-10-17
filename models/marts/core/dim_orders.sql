@@ -31,7 +31,9 @@ final as (
         orders.priority_code,
         orders.clerk_name,
         orders.ship_priority,
-        orders.comment
+        orders.comment,
+        orders.update_timestamp_ntz
+
 
     from
         orders
