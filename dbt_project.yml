@@ -46,7 +46,6 @@ seeds:
 models:
 
   my_snowflake_dbt_project:
-  snowflake_warehouse: DBT_WAREHOUSE
     # When you rename the project up top, remember to rename it here too. 
       staging:
           # Applies to all files under models/staging 
