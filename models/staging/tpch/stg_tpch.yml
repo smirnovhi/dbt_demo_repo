@@ -36,8 +36,7 @@ models:
       - name: order_item_key
         description: '{{ doc("order_item_key") }}'
         tests:
-          - unique
-          - not_null
+          - primary_key
       - name: order_key
         description: foreign key to stg_tpch_orders
       - name: part_key
