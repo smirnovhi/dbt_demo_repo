@@ -1,3 +1,9 @@
+{{ config(
+    materialized="ephemeral",
+    tags="hourly"
+) }}
+
+
 with source as (
 
     select * from {{ source('tpch', 'nation') }}
